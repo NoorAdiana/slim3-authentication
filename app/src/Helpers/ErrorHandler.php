@@ -18,7 +18,13 @@ class ErrorHandler extends Error
 
     public function __invoke(Request $request, Response $response, \Exception $exception)
     {
-        $this->logger->critical($exception->getMessage());
+        $error = [
+            'Type' => get_class($exception),
+            'Message' => $exception->getMessage(),
+            'File' => $exception->getFile(),
+            'Line' => $exception->getLine()
+        ];
+        $this->logger->critical(json_encode($error));
 
         return parent::__invoke($request, $response, $exception);
     }
