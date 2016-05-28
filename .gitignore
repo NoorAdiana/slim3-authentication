@@ -1,7 +1,8 @@
 # Created by https://www.gitignore.io/api/linux,windows,vagrant,sublimetext
 
 ### My Ignore ###
-cache/
+cache
+logs
 
 ### Linux ###
 *~

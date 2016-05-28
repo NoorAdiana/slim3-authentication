@@ -16,9 +16,33 @@ $container['view'] = function ($container){
     return $view;
 };
 
+
+// -----------------------------------------------------------------------------
+// Service factories
+// -----------------------------------------------------------------------------
+
+// Monolog
+$container['logger'] = function ($c) {
+    $settings = $c->get('settings');
+    $logger = new Monolog\Logger($settings['logger']['name']);
+    $logger->pushProcessor(
+        new Monolog\Processor\UidProcessor()
+    );
+    $logger->pushHandler(
+        new Monolog\Handler\StreamHandler($settings['logger']['path'], 
+        Monolog\Logger::DEBUG)
+    );
+    return $logger;
+};
+
+// Error Handlers
+$container['errorHandler'] = function ($container) {
+    return new App\Helpers\ErrorHandler($container->logger);
+};
+
 // -----------------------------------------------------------------------------
 // Controller factories
 // -----------------------------------------------------------------------------
 $container['HomeController'] = function ($container) {
-    return new App\Controllers\HomeController($container->view);
+    return new App\Controllers\HomeController($container->view, $container->logger);
 };

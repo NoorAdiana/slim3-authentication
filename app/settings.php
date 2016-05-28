@@ -12,5 +12,9 @@ return [
                 'auto_reload' => true,
             ],
         ],
+        'logger' => [
+            'name' => 'app',
+            'path' => __DIR__ . '/../logs/app.log',
+        ],
     ],
 ];
