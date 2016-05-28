@@ -2,19 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Controller;
 use Slim\Views\Twig as View;
 use Psr\Log\LoggerInterface;
 
-class HomeController
+class HomeController extends Controller
 {
-    protected $view;
-    protected $logger;
-
-    public function __construct(View $view, LoggerInterface $logger){
-        $this->view = $view;
-        $this->logger = $logger;
-    }
-
     public function index($request, $response){
         $this->logger->info("Home page action dispatched");
         return $this->view->render($response, 'home.twig');

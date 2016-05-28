@@ -3,6 +3,7 @@
 ### My Ignore ###
 cache
 logs
+bower_components
 
 ### Linux ###
 *~

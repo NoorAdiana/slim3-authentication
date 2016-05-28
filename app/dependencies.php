@@ -44,5 +44,5 @@ $container['errorHandler'] = function ($container) {
 // Controller factories
 // -----------------------------------------------------------------------------
 $container['HomeController'] = function ($container) {
-    return new App\Controllers\HomeController($container->view, $container->logger);
+    return new App\Controllers\HomeController($container);
 };

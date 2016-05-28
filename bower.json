@@ -1,0 +1,17 @@
+{
+    "name": "slim3-authentication",
+    "homepage": "https://github.com/NoorAdiana/slim3-authentication",
+    "description": "Sample Slim Framework 3 project with Twig, Eloquent and more",
+    "authors": [
+        "Noor Adiana"
+    ],
+    "license": "BSD-3-Clause",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "public/bower_components",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
