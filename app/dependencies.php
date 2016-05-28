@@ -3,6 +3,14 @@
 $container = $app->getContainer();
 
 // -----------------------------------------------------------------------------
+// Illuminate Eloquent Capsule
+// -----------------------------------------------------------------------------
+$capsule = new Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($container->settings['db']);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+
+// -----------------------------------------------------------------------------
 // Twig
 // -----------------------------------------------------------------------------
 $container['view'] = function ($container){
@@ -20,6 +28,11 @@ $container['view'] = function ($container){
 // -----------------------------------------------------------------------------
 // Service factories
 // -----------------------------------------------------------------------------
+
+// Database
+$container['db'] = function ($container) use ($capsule) {
+    return $capsule;
+};
 
 // Monolog
 $container['logger'] = function ($c) {
