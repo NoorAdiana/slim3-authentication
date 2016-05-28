@@ -1,0 +1,25 @@
+{
+    "name": "slim3-authentication",
+    "description": "Sample Slim Framework 3 project with Twig, Eloquent and more",
+    "license": "BSD-3-Clause",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Noor Adiana",
+            "email": "me@nooradiana.com",
+            "homepage": "http://nooradiana.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.0",
+        "php-di/slim-bridge": "^1.0",
+        "illuminate/database": "^5.2",
+        "slim/twig-view": "^2.1",
+        "monolog/monolog": "^1.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/src"
+        }
+    }
+}
