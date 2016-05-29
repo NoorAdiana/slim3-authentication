@@ -16,7 +16,7 @@ class Validator
             try {
                 $rule->setName(ucfirst($field))->assert($request->getParam($field));
             } catch(NestedValidationException $e){
-                $this->errors[$field] = $e->getMessages();
+                $this->errors[$field] = str_replace('_', ' ', $e->getMessages());
             }
         }
 

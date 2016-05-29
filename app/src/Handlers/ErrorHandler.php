@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Handlers;
 
 use Slim\Handlers\Error;
 use Monolog\Logger;

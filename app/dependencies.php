@@ -13,6 +13,18 @@ $capsule->bootEloquent();
 // -----------------------------------------------------------------------------
 // Twig
 // -----------------------------------------------------------------------------
+
+// Authentication
+$container['auth'] = function ($container) {
+    return new App\Auth\Authentication;
+};
+
+// Flash Message
+$container['flash'] = function () {
+    return new \Slim\Flash\Messages();
+};
+
+// View
 $container['view'] = function ($container){
     $settings = $container->settings;
     $view = new Slim\Views\Twig($settings['view']['template_path'], $settings['view']['twig']);
@@ -21,6 +33,14 @@ $container['view'] = function ($container){
         $container->request->getUri()
     ));
     $view->addExtension(new Twig_Extension_Debug());
+
+    $view->getEnvironment()->addGlobal('auth', [
+        'check' => $container->auth->check(),
+        'user' => $container->auth->user(),
+    ]);
+
+    $view->getEnvironment()->addGlobal('flash', $container->flash);
+
     return $view;
 };
 
@@ -72,4 +92,8 @@ $container['HomeController'] = function ($container) {
 
 $container['AuthController'] = function ($container) {
     return new App\Controllers\Auth\AuthController($container);
+};
+
+$container['PasswordController'] = function ($container) {
+    return new App\Controllers\Auth\PasswordController($container);
 };
