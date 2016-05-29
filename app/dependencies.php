@@ -50,7 +50,12 @@ $container['logger'] = function ($c) {
 
 // Error Handlers
 $container['errorHandler'] = function ($container) {
-    return new App\Helpers\ErrorHandler($container->logger);
+    return new App\Handlers\ErrorHandler($container->logger);
+};
+
+// Validation
+$container['validator'] = function ($container) {
+    return new App\Validation\Validator;
 };
 
 // -----------------------------------------------------------------------------
@@ -58,4 +63,8 @@ $container['errorHandler'] = function ($container) {
 // -----------------------------------------------------------------------------
 $container['HomeController'] = function ($container) {
     return new App\Controllers\HomeController($container);
+};
+
+$container['AuthController'] = function ($container) {
+    return new App\Controllers\Auth\AuthController($container);
 };
