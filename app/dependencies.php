@@ -58,6 +58,11 @@ $container['validator'] = function ($container) {
     return new App\Validation\Validator;
 };
 
+// Slim CSRF
+$container['csrf'] = function ($container) {
+    return new Slim\Csrf\Guard;
+};
+
 // -----------------------------------------------------------------------------
 // Controller factories
 // -----------------------------------------------------------------------------
